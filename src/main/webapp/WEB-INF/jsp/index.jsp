@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : Feb 1, 2023, 4:25:17 PM
-    Author     : karat
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,10 +7,11 @@
     </head>
     <body>
         <h1>Car Form</h1>
-        <form action="car/insert" method="post">
+        <form enctype="multipart/form-data" action="car/insert" method="post">
             
-            Plate <input type="text" name="plate"/>
-            Power <input type="number" name="power"/>
+            Plate <input type="text" name="plate"/><br>
+            Power <input type="number" name="power"/><br>
+            Insurance <input type="file" name="insurance"/><br>
             <input type="submit">
         </form>
     </body>

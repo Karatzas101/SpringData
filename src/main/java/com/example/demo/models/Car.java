@@ -11,24 +11,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author karat
  */
 @Entity
-@Table(name = "cars")
-@XmlRootElement
+@Table(name = "car")
 @NamedQueries({
-    @NamedQuery(name = "Cars.findAll", query = "SELECT c FROM Cars c"),
-    @NamedQuery(name = "Cars.findById", query = "SELECT c FROM Cars c WHERE c.id = :id"),
-    @NamedQuery(name = "Cars.findByPlate", query = "SELECT c FROM Cars c WHERE c.plate = :plate"),
-    @NamedQuery(name = "Cars.findByPower", query = "SELECT c FROM Cars c WHERE c.power = :power")})
-public class Cars implements Serializable {
+    @NamedQuery(name = "Car.findAll", query = "SELECT c FROM Car c"),
+    @NamedQuery(name = "Car.findById", query = "SELECT c FROM Car c WHERE c.id = :id"),
+    @NamedQuery(name = "Car.findByPlate", query = "SELECT c FROM Car c WHERE c.plate = :plate"),
+    @NamedQuery(name = "Car.findByPower", query = "SELECT c FROM Car c WHERE c.power = :power"),
+    @NamedQuery(name = "Car.findByInsurancefilename", query = "SELECT c FROM Car c WHERE c.insurancefilename = :insurancefilename")})
+public class Car implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,24 +40,27 @@ public class Cars implements Serializable {
     private String plate;
     @Column(name = "power")
     private Integer power;
+    @Lob
+    @Column(name = "insurancefile")
+    private byte[] insurancefile;
+    @Column(name = "insurancefilename")
+    private String insurancefilename;
 
-    public Cars() {
+    public Car() {
     }
 
-    public Cars(String plate, Integer power) {
+    public Car(String plate, Integer power) {
         this.plate = plate;
         this.power = power;
     }
 
-    public Cars(Integer id, String plate, Integer power) {
+    public Car(Integer id, String plate, Integer power) {
         this.id = id;
         this.plate = plate;
         this.power = power;
     }
-    
 
-    
-    public Cars(Integer id) {
+    public Car(Integer id) {
         this.id = id;
     }
 
@@ -85,6 +88,22 @@ public class Cars implements Serializable {
         this.power = power;
     }
 
+    public byte[] getInsurancefile() {
+        return insurancefile;
+    }
+
+    public void setInsurancefile(byte[] insurancefile) {
+        this.insurancefile = insurancefile;
+    }
+
+    public String getInsurancefilename() {
+        return insurancefilename;
+    }
+
+    public void setInsurancefilename(String insurancefilename) {
+        this.insurancefilename = insurancefilename;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -95,10 +114,10 @@ public class Cars implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cars)) {
+        if (!(object instanceof Car)) {
             return false;
         }
-        Cars other = (Cars) object;
+        Car other = (Car) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -107,15 +126,7 @@ public class Cars implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Cars{");
-        sb.append("id=").append(id);
-        sb.append(", plate=").append(plate);
-        sb.append(", power=").append(power);
-        sb.append('}');
-        return sb.toString();
+        return "com.example.demo.models.Car[ id=" + id + " ]";
     }
-
-  
     
 }

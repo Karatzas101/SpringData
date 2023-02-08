@@ -21,6 +21,9 @@
             <td>id</td>
             <td>plate</td>
             <td>power</td>
+            <td>Update</td>
+            <td>Delete</td>
+            <td>Download</td>
          </tr>
          <c:forEach items="${cars}" var="car">
              
@@ -30,6 +33,7 @@
             <td>${car.getPower()}</td>
             <td><a href="/car/update/${car.getId()}">Update</a> </td>
             <td><a href="/car/delete/${car.getId()}">Delete</a> </td>
+            <td><a href="/car/download/${car.getId()}" target="_blank">${car.insurancefilename}</a> </td>
          </tr>
              
          </c:forEach>

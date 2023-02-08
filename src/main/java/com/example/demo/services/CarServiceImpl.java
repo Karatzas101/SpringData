@@ -4,7 +4,7 @@
  */
 package com.example.demo.services;
 
-import com.example.demo.models.Cars;
+import com.example.demo.models.Car;
 import com.example.demo.repo.CarRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +18,20 @@ public class CarServiceImpl implements CarServiceInterface {
     CarRepository cr;
     
     @Override
-    public void insert(Cars c) {
+    public void insert(Car c) {
          
      cr.save(c);
         
     }
 
     @Override
-    public List<Cars> all() {
+    public List<Car> all() {
 
         return cr.findAll();
     }
 
     @Override
-    public Cars getById(Integer id) { 
+    public Car getById(Integer id) { 
         
         return cr.findById(id).get();
         
@@ -39,13 +39,13 @@ public class CarServiceImpl implements CarServiceInterface {
 
     @Override
     @Transactional
-    public void updateCar(Cars c) {
+    public void updateCar(Car c) {
         
         
     }
 
     @Override
-    public void deleteCar(Cars c) {
+    public void deleteCar(Car c) {
         
         cr.delete(c);
     }

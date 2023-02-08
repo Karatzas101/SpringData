@@ -4,19 +4,19 @@
  */
 package com.example.demo.services;
 
-import com.example.demo.models.Cars;
+import com.example.demo.models.Car;
 import java.util.List;
 
 
 public interface CarServiceInterface {
     
-    public void insert(Cars c);
+    public void insert(Car c);
     
-    public List<Cars> all();
+    public List<Car> all();
     
-    public Cars getById(Integer id);
+    public Car getById(Integer id);
     
-    public void updateCar(Cars c);
+    public void updateCar(Car c);
     
-    public void deleteCar(Cars c);
+    public void deleteCar(Car c);
 }
